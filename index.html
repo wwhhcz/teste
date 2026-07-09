@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Radar da Barra — Preços da Barra do Ceará</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,700;0,900;1,600&family=Inter:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --white:#ffffff;
+  --off:#FBF6F5;
+  --red:#C81D25;
+  --red-dark:#8C0F17;
+  --red-soft:#FCE6E5;
+  --ink:#1A1414;
+  --gray:#6E6462;
+  --line:#EADEDC;
+  --green:#0E7A4A;
+  --green-soft:#E4F4EC;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Inter', sans-serif;
+  color:var(--ink);
+  background:var(--white);
+  line-height:1.5;
+  overflow-x:hidden;
+}
+h1,h2,h3,h4{font-family:'Fraunces', serif; font-weight:700; letter-spacing:-0.01em;}
+.mono{font-family:'Space Mono', monospace;}
+a{color:inherit; text-decoration:none;}
+img{max-width:100%; display:block;}
+.wrap{max-width:1180px; margin:0 auto; padding:0 24px;}
+::selection{background:var(--red); color:var(--white);}
+
+/* ===== HEADER ===== */
+header{
+  position:sticky; top:0; z-index:500;
+  background:rgba(255,255,255,.92);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.header-inner{
+  max-width:1180px; margin:0 auto; padding:14px 24px;
+  display:flex; align-items:center; justify-content:space-between; gap:20px;
+}
+.logo{display:flex; align-items:center; gap:10px; font-weight:800; font-size:1.15rem;}
+.logo-mark{
+  width:34px; height:34px; border-radius:50%;
+  background:var(--red); position:relative; flex-shrink:0;
+}
+.logo-mark::before{
+  content:''; position:absolute; inset:8px; border:2px solid var(--white); border-radius:50%;
+}
+.logo-mark::after{
+  content:''; position:absolute; width:2px; height:10px; background:var(--white);
+  bottom:2px; right:9px; transform:rotate(45deg); border-radius:2px;
+}
+.logo small{display:block; font-family:'Inter'; font-weight:500; font-size:.62rem; letter-spacing:.12em; color:var(--gray); text-transform:uppercase;}
+
+nav{display:flex; gap:4px;}
+nav button{
+  font-family:'Inter'; font-weight:600; font-size:.86rem; color:var(--ink);
+  background:none; border:none; padding:9px 14px; border-radius:100px; cursor:pointer;
+  transition:.2s; white-space:nowrap;
+}
+nav button:hover{background:var(--off);}
+nav button.active{background:var(--red); color:var(--white);}
+.burger{display:none; background:none; border:none; font-size:1.4rem; cursor:pointer; color:var(--red);}
+
+@media (max-width:880px){
+  nav{
+    display:none; position:absolute; top:100%; left:0; right:0; background:var(--white);
+    flex-direction:column; padding:10px 20px 18px; border-bottom:1px solid var(--line);
+    box-shadow:0 12px 24px rgba(0,0,0,.06);
+  }
+  nav.open{display:flex;}
+  nav button{text-align:left; width:100%;}
+  .burger{display:block;}
+}
+
+/* ===== TICKER ===== */
+.ticker-wrap{
+  background:var(--ink); color:var(--white); overflow:hidden; white-space:nowrap;
+  border-bottom:3px solid var(--red);
+}
+.ticker{display:inline-flex; padding:9px 0; animation:scroll 48s linear infinite;}
+.ticker:hover{animation-play-state:paused;}
+@keyframes scroll{from{transform:translateX(0);} to{transform:translateX(-50%);}}
+.tick-item{
+  font-family:'Space Mono'; font-size:.82rem; padding:0 26px; display:inline-flex; align-items:center; gap:8px;
+  border-right:1px solid rgba(255,255,255,.15);
+}
+.tick-up{color:#FF8A8A;}
+.tick-down{color:#7CE0AE;}
+
+/* ===== SECTIONS ===== */
+section{padding:64px 0; scroll-margin-top:120px;}
+.section-head{max-width:640px; margin-bottom:36px;}
+.eyebrow{
+  font-family:'Space Mono'; font-size:.72rem; text-transform:uppercase; letter-spacing:.14em;
+  color:var(--red); display:flex; align-items:center; gap:8px; margin-bottom:10px;
+}
+.eyebrow::before{content:''; width:22px; height:2px; background:var(--red);}
+.section-head h2{font-size:2.1rem; margin-bottom:10px;}
+.section-head p{color:var(--gray); font-size:1.02rem;}
+.alt{background:var(--off);}
+
+/* ===== HERO ===== */
+.hero{padding:70px 0 50px;}
+.hero-grid{display:grid; grid-template-columns:1.15fr .85fr; gap:50px; align-items:center;}
+.hero h1{font-size:clamp(2.4rem, 5vw, 3.6rem); line-height:1.04; margin-bottom:18px;}
+.hero h1 em{color:var(--red); font-style:italic;}
+.hero p.lead{font-size:1.12rem; color:var(--gray); max-width:480px; margin-bottom:26px;}
+.hero-stats{display:flex; gap:14px; flex-wrap:wrap;}
+.stat-pill{
+  background:var(--off); border:1px solid var(--line); border-radius:14px; padding:14px 18px; min-width:140px;
+}
+.stat-pill .num{font-family:'Fraunces'; font-size:1.5rem; font-weight:800; color:var(--red-dark);}
+.stat-pill .lbl{font-size:.72rem; color:var(--gray); text-transform:uppercase; letter-spacing:.06em;}
+
+.basket-card{
+  background:var(--ink); color:var(--white); border-radius:22px; padding:32px; position:relative; overflow:hidden;
+}
+.basket-card::before{
+  content:'CESTA BÁSICA'; position:absolute; top:-14px; right:-40px; font-family:'Space Mono';
+  font-size:5.5rem; font-weight:700; color:rgba(255,255,255,.04); white-space:nowrap; pointer-events:none;
+}
+.basket-card .tag{font-family:'Space Mono'; font-size:.7rem; color:#FF8A8A; text-transform:uppercase; letter-spacing:.1em;}
+.basket-card h3{font-size:1.2rem; margin:8px 0 18px; font-family:'Inter'; font-weight:600; color:#EDE6E5;}
+.basket-price{font-family:'Fraunces'; font-size:3rem; font-weight:800; line-height:1;}
+.basket-price span{font-size:1.3rem; vertical-align:top;}
+.basket-meta{display:flex; gap:16px; margin-top:18px; font-family:'Space Mono'; font-size:.8rem;}
+.basket-meta .up{color:#FF8A8A;}
+.basket-note{margin-top:18px; font-size:.78rem; color:#B8ACAA; line-height:1.5; border-top:1px solid rgba(255,255,255,.14); padding-top:14px;}
+
+/* ===== FILTERS ===== */
+.filters{
+  display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:24px;
+  background:var(--off); border:1px solid var(--line); border-radius:16px; padding:14px;
+}
+.filters input[type=text]{
+  flex:1; min-width:180px; padding:10px 14px; border-radius:100px; border:1px solid var(--line);
+  font-family:'Inter'; font-size:.9rem; background:var(--white);
+}
+.filters select{
+  padding:10px 14px; border-radius:100px; border:1px solid var(--line); font-family:'Inter'; font-size:.87rem;
+  background:var(--white); cursor:pointer;
+}
+.seg{display:flex; background:var(--white); border:1px solid var(--line); border-radius:100px; padding:3px;}
+.seg button{
+  border:none; background:none; padding:8px 15px; border-radius:100px; font-family:'Inter'; font-weight:600;
+  font-size:.82rem; cursor:pointer; color:var(--gray);
+}
+.seg button.active{background:var(--red); color:var(--white);}
+
+/* ===== TABLE / GRID ===== */
+.price-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(255px,1fr)); gap:14px;}
+.price-card{
+  border:1px solid var(--line); border-radius:16px; padding:16px 18px; transition:.2s;
+  display:flex; flex-direction:column; gap:8px;
+}
+.price-card:hover{border-color:var(--red); box-shadow:0 8px 20px rgba(200,29,37,.08); transform:translateY(-2px);}
+.price-card .cat{font-family:'Space Mono'; font-size:.65rem; text-transform:uppercase; letter-spacing:.08em; color:var(--gray);}
+.price-card h4{font-size:1.02rem; font-weight:600; font-family:'Inter';}
+.price-row{display:flex; align-items:baseline; gap:10px; margin-top:4px;}
+.price-old{font-family:'Space Mono'; font-size:.82rem; color:var(--gray); text-decoration:line-through;}
+.price-new{font-family:'Space Mono'; font-size:1.2rem; font-weight:700;}
+.badge{
+  align-self:flex-start; font-family:'Space Mono'; font-size:.74rem; font-weight:700; padding:3px 9px; border-radius:100px;
+  display:flex; align-items:center; gap:4px;
+}
+.badge.up{background:var(--red-soft); color:var(--red-dark);}
+.badge.down{background:var(--green-soft); color:var(--green);}
+.empty-msg{padding:40px; text-align:center; color:var(--gray); font-family:'Space Mono'; font-size:.9rem; display:none;}
+
+/* ===== MERCADOS ===== */
+.market-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(280px,1fr)); gap:16px;}
+.market-card{border:1px solid var(--line); border-radius:18px; padding:20px; position:relative;}
+.market-card .top-row{display:flex; justify-content:space-between; align-items:flex-start; gap:8px;}
+.market-card h4{font-size:1.05rem;}
+.market-card .rating{font-family:'Space Mono'; font-size:.78rem; color:var(--red-dark); white-space:nowrap;}
+.market-card .addr{font-size:.84rem; color:var(--gray); margin:8px 0 12px;}
+.market-tag{
+  display:inline-block; font-family:'Space Mono'; font-size:.68rem; text-transform:uppercase; letter-spacing:.05em;
+  background:var(--off); border:1px solid var(--line); color:var(--gray); padding:4px 9px; border-radius:100px; margin-bottom:10px;
+}
+.market-tag.best{background:var(--red); color:var(--white); border-color:var(--red);}
+.market-card a.maplink{font-family:'Space Mono'; font-size:.78rem; color:var(--red); font-weight:700;}
+.market-card a.maplink:hover{text-decoration:underline;}
+
+/* ===== FINALIDADE ===== */
+.pillars{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:18px; margin-top:10px;}
+.pillar{border:1px solid var(--line); border-radius:18px; padding:24px;}
+.pillar .n{font-family:'Space Mono'; color:var(--red); font-weight:700; font-size:.85rem;}
+.pillar h3{font-size:1.1rem; margin:10px 0 8px;}
+.pillar p{color:var(--gray); font-size:.92rem;}
+
+/* ===== TUTORIAL ===== */
+.steps{counter-reset:step; margin:10px 0 40px;}
+.step{
+  display:grid; grid-template-columns:52px 1fr; gap:18px; padding:20px 0; border-bottom:1px solid var(--line);
+}
+.step:first-child{border-top:1px solid var(--line);}
+.step .num{
+  counter-increment:step; font-family:'Fraunces'; font-weight:800; font-size:1.3rem; color:var(--red);
+}
+.step h4{margin-bottom:4px;}
+.step p{color:var(--gray); font-size:.92rem;}
+
+.faq{border-top:1px solid var(--line);}
+.faq-item{border-bottom:1px solid var(--line);}
+.faq-q{
+  width:100%; text-align:left; background:none; border:none; padding:18px 4px; cursor:pointer;
+  display:flex; justify-content:space-between; align-items:center; font-family:'Inter'; font-weight:600; font-size:.98rem;
+}
+.faq-q .plus{font-family:'Space Mono'; font-size:1.2rem; color:var(--red); transition:.2s;}
+.faq-item.open .plus{transform:rotate(45deg);}
+.faq-a{max-height:0; overflow:hidden; transition:max-height .25s ease; color:var(--gray); font-size:.9rem;}
+.faq-a p{padding:0 4px 18px;}
+
+/* ===== REPORTAR ===== */
+.report-tabs{display:flex; gap:10px; margin-bottom:24px;}
+.report-tabs button{
+  flex:1; padding:14px; border-radius:14px; border:1px solid var(--line); background:var(--white);
+  font-family:'Inter'; font-weight:700; cursor:pointer; font-size:.9rem;
+}
+.report-tabs button.active{background:var(--red); color:var(--white); border-color:var(--red);}
+.form-panel{display:none;}
+.form-panel.active{display:block;}
+form{display:grid; gap:14px; max-width:560px;}
+label{font-size:.8rem; font-weight:600; color:var(--gray); text-transform:uppercase; letter-spacing:.04em; margin-bottom:4px; display:block;}
+input, select, textarea{
+  width:100%; padding:12px 14px; border-radius:12px; border:1px solid var(--line); font-family:'Inter'; font-size:.92rem;
+}
+textarea{resize:vertical; min-height:80px;}
+.submit-btn{
+  background:var(--red); color:var(--white); border:none; padding:14px 22px; border-radius:100px; font-weight:700;
+  cursor:pointer; font-family:'Inter'; font-size:.92rem; width:fit-content; transition:.2s;
+}
+.submit-btn:hover{background:var(--red-dark);}
+.confirm-msg{
+  display:none; background:var(--green-soft); color:var(--green); padding:12px 16px; border-radius:12px;
+  font-size:.86rem; font-weight:600; margin-top:10px;
+}
+.recent-reports{margin-top:34px;}
+.recent-reports h4{font-size:.95rem; margin-bottom:12px; color:var(--gray); text-transform:uppercase; letter-spacing:.05em; font-family:'Space Mono'; font-weight:400;}
+.report-item{
+  border:1px solid var(--line); border-radius:12px; padding:12px 16px; margin-bottom:8px; font-size:.86rem;
+  display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
+}
+.report-item .who{color:var(--gray); font-family:'Space Mono'; font-size:.74rem;}
+
+/* ===== FOOTER ===== */
+footer{background:var(--ink); color:#CFC5C3; padding:50px 0 24px; margin-top:20px;}
+.footer-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:36px; margin-bottom:36px;}
+footer h5{color:var(--white); font-family:'Inter'; font-size:.85rem; text-transform:uppercase; letter-spacing:.08em; margin-bottom:14px;}
+footer p, footer li{font-size:.86rem; line-height:1.7; color:#B8ACAA;}
+footer ul{list-style:none;}
+footer a:hover{color:var(--white);}
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.12); padding-top:20px; display:flex; justify-content:space-between;
+  flex-wrap:wrap; gap:10px; font-size:.76rem; color:#8A7E7C;
+}
+@media (max-width:760px){
+  .hero-grid, .footer-grid{grid-template-columns:1fr;}
+  .footer-grid{gap:24px;}
+}
+
+/* scroll reveal */
+.reveal{opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease;}
+.reveal.show{opacity:1; transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <span class="logo-mark"></span>
+      <div>Radar da Barra<small>Barra do Ceará · Fortaleza/CE</small></div>
+    </div>
+    <button class="burger" id="burgerBtn">☰</button>
+    <nav id="mainNav">
+      <button data-target="precos" class="active">Preços</button>
+      <button data-target="mercados">Mercados</button>
+      <button data-target="finalidade">Finalidade</button>
+      <button data-target="tutorial">Tutorial</button>
+      <button data-target="reportar">Reportar</button>
+    </nav>
+  </div>
+  <div class="ticker-wrap">
+    <div class="ticker" id="tickerTrack"></div>
+  </div>
+</header>
+
+<!-- ===================== PREÇOS ===================== -->
+<section id="precos">
+  <div class="wrap">
+
+    <div class="hero reveal">
+      <div class="hero-grid">
+        <div>
+          <h1>Quanto custa <em>comer</em><br>na Barra do Ceará?</h1>
+          <p class="lead">Acompanhamento colaborativo dos preços de 30 alimentos essenciais em 15 mercados do bairro, atualizado pela própria comunidade.</p>
+          <div class="hero-stats">
+            <div class="stat-pill"><div class="num">30</div><div class="lbl">alimentos monitorados</div></div>
+            <div class="stat-pill"><div class="num">15</div><div class="lbl">mercados mapeados</div></div>
+            <div class="stat-pill"><div class="num" id="upCount">--</div><div class="lbl">itens em alta</div></div>
+            <div class="stat-pill"><div class="num" id="downCount">--</div><div class="lbl">itens em queda</div></div>
+          </div>
+        </div>
+        <div class="basket-card">
+          <span class="tag">Fortaleza · Dieese/Conab</span>
+          <h3>Custo da cesta básica na capital</h3>
+          <div class="basket-price">R$ 687<span>,90</span></div>
+          <div class="basket-meta">
+            <span class="up">▲ 7,48% no mês</span>
+            <span>maio/2026</span>
+          </div>
+          <div class="basket-note">Fortaleza segue entre as capitais nordestinas com a cesta mais barata do país, mas registrou uma das maiores altas mensais do Brasil — puxada principalmente pelo tomate e pelo leite. Valor de referência estadual (Dieese/Conab); os preços por mercado abaixo usam a Ceasa-CE como base e são refinados pelos reportes da comunidade.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-head reveal" style="margin-top:30px;">
+      <div class="eyebrow">Tabela de preços</div>
+      <h2>30 alimentos, preço antigo x atual</h2>
+      <p>Valores de referência com base nas cotações da Ceasa-CE e na Pesquisa Nacional da Cesta Básica (Dieese/Conab), ajustados por reportes de moradores. Podem variar entre mercados — confira a aba Mercados.</p>
+    </div>
+
+    <div class="filters reveal">
+      <input type="text" id="searchInput" placeholder="Buscar alimento (ex: arroz, tomate...)">
+      <select id="catFilter">
+        <option value="todos">Todas as categorias</option>
+        <option value="Grãos e cereais">Grãos e cereais</option>
+        <option value="Hortifruti">Hortifruti</option>
+        <option value="Proteínas">Proteínas</option>
+        <option value="Laticínios">Laticínios</option>
+        <option value="Outros">Outros</option>
+      </select>
+      <div class="seg" id="variSeg">
+        <button data-vari="todos" class="active">Todos</button>
+        <button data-vari="up">Subiram</button>
+        <button data-vari="down">Baixaram</button>
+      </div>
+    </div>
+
+    <div class="price-grid reveal" id="priceGrid"></div>
+    <div class="empty-msg" id="emptyMsg">Nenhum alimento encontrado com esse filtro.</div>
+  </div>
+</section>
+
+<!-- ===================== MERCADOS ===================== -->
+<section id="mercados" class="alt">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Onde comprar</div>
+      <h2>15 mercados da Barra do Ceará</h2>
+      <p>Endereços reais do bairro. O selo "melhor custo-benefício" indica o formato historicamente mais competitivo para compras em maior volume — vale sempre comparar item a item na aba Preços.</p>
+    </div>
+    <div class="market-grid reveal" id="marketGrid"></div>
+  </div>
+</section>
+
+<!-- ===================== FINALIDADE ===================== -->
+<section id="finalidade">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Por que existimos</div>
+      <h2>A finalidade do Radar da Barra</h2>
+      <p>O Radar da Barra é um projeto comunitário, gratuito e sem fins lucrativos, criado para dar mais transparência ao custo de vida no bairro Barra do Ceará.</p>
+    </div>
+    <div class="pillars reveal">
+      <div class="pillar">
+        <div class="n">01</div>
+        <h3>Economia doméstica</h3>
+        <p>Ajudar famílias a planejar as compras do mês, identificar onde os preços caíram e evitar pagar mais caro por desinformação.</p>
+      </div>
+      <div class="pillar">
+        <div class="n">02</div>
+        <h3>Transparência local</h3>
+        <p>Tornar público o comportamento dos preços dos mercados do entorno, com dados que qualquer morador pode consultar e contribuir.</p>
+      </div>
+      <div class="pillar">
+        <div class="n">03</div>
+        <h3>Segurança alimentar</h3>
+        <p>Monitorar produtos essenciais da cesta básica para apoiar quem mais sente o peso da inflação de alimentos no dia a dia.</p>
+      </div>
+      <div class="pillar">
+        <div class="n">04</div>
+        <h3>Força coletiva</h3>
+        <p>Quanto mais moradores reportam preços e datas de vencimento, mais confiável e útil o Radar se torna para todo o bairro.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TUTORIAL ===================== -->
+<section id="tutorial" class="alt">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Como usar</div>
+      <h2>Tutorial rápido</h2>
+      <p>Quatro passos simples para tirar o máximo proveito do site.</p>
+    </div>
+    <div class="steps reveal">
+      <div class="step">
+        <div class="num">01</div>
+        <div><h4>Consulte a aba Preços</h4><p>Veja o preço antigo e o atual de cada alimento. Use a busca ou os filtros de categoria para achar o que precisa rapidamente.</p></div>
+      </div>
+      <div class="step">
+        <div class="num">02</div>
+        <div><h4>Filtre por "Subiram" ou "Baixaram"</h4><p>Use os botões de variação para descobrir rapidamente onde vale a pena economizar neste mês.</p></div>
+      </div>
+      <div class="step">
+        <div class="num">03</div>
+        <div><h4>Compare os mercados</h4><p>Na aba Mercados, veja endereço, avaliação e o link direto para o mapa de cada um dos 15 pontos de venda do bairro.</p></div>
+      </div>
+      <div class="step">
+        <div class="num">04</div>
+        <div><h4>Contribua</h4><p>Encontrou um preço diferente ou um produto perto do vencimento? Reporte na aba Reportar — isso mantém o Radar confiável para todo mundo.</p></div>
+      </div>
+    </div>
+
+    <div class="section-head reveal">
+      <div class="eyebrow">Dúvidas</div>
+      <h2>Perguntas frequentes</h2>
+    </div>
+    <div class="faq reveal" id="faqList"></div>
+  </div>
+</section>
+
+<!-- ===================== REPORTAR ===================== -->
+<section id="reportar">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Participe</div>
+      <h2>Reportar preço ou vencimento</h2>
+      <p>Encontrou um preço diferente do informado ou um produto próximo do vencimento em algum mercado? Conte pra gente.</p>
+    </div>
+
+    <div class="report-tabs reveal">
+      <button data-form="preco" class="active">💰 Reportar preço</button>
+      <button data-form="venc">⏰ Reportar vencimento</button>
+    </div>
+
+    <div class="form-panel active reveal" id="form-preco">
+      <form id="formPreco">
+        <div>
+          <label>Alimento</label>
+          <select id="p-alimento" required></select>
+        </div>
+        <div>
+          <label>Mercado</label>
+          <select id="p-mercado" required></select>
+        </div>
+        <div>
+          <label>Preço encontrado (R$)</label>
+          <input type="number" step="0.01" min="0" id="p-preco" placeholder="Ex: 5.49" required>
+        </div>
+        <div>
+          <label>Seu nome ou apelido (opcional)</label>
+          <input type="text" id="p-nome" placeholder="Ex: Dona Fran">
+        </div>
+        <button type="submit" class="submit-btn">Enviar reporte de preço</button>
+        <div class="confirm-msg" id="confirmPreco">Reporte enviado! Obrigado por ajudar o bairro.</div>
+      </form>
+    </div>
+
+    <div class="form-panel" id="form-venc">
+      <form id="formVenc">
+        <div>
+          <label>Produto</label>
+          <input type="text" id="v-produto" placeholder="Ex: Iogurte natural 170g" required>
+        </div>
+        <div>
+          <label>Mercado</label>
+          <select id="v-mercado" required></select>
+        </div>
+        <div>
+          <label>Data de vencimento</label>
+          <input type="date" id="v-data" required>
+        </div>
+        <div>
+          <label>Observação (opcional)</label>
+          <textarea id="v-obs" placeholder="Ex: Lote na prateleira de laticínios, perto da entrada"></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Enviar reporte de vencimento</button>
+        <div class="confirm-msg" id="confirmVenc">Reporte enviado! Obrigado por avisar a vizinhança.</div>
+      </form>
+    </div>
+
+    <div class="recent-reports reveal">
+      <h4>Reportes recentes da comunidade</h4>
+      <div id="reportsList"></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h5>Radar da Barra</h5>
+        <p>Projeto comunitário, independente e sem fins lucrativos de monitoramento de preços na Barra do Ceará, Fortaleza — CE. Os dados são educativos e colaborativos; confirme sempre o preço no caixa do mercado.</p>
+      </div>
+      <div>
+        <h5>Navegação</h5>
+        <ul>
+          <li><a href="#precos">Preços</a></li>
+          <li><a href="#mercados">Mercados</a></li>
+          <li><a href="#finalidade">Finalidade</a></li>
+          <li><a href="#tutorial">Tutorial</a></li>
+          <li><a href="#reportar">Reportar</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Termos de uso</h5>
+        <p>Os preços exibidos são valores de referência baseados em cotações públicas (Ceasa-CE, Dieese/Conab) e reportes voluntários de moradores, podendo não refletir o preço exato no momento da sua compra. O Radar da Barra não se responsabiliza por decisões de compra tomadas com base nestas informações e não possui vínculo comercial com os mercados listados. Ao enviar um reporte, você concorda que a informação poderá ser exibida publicamente no site.</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Radar da Barra — feito por e para o bairro.</span>
+      <span>Fontes: Ceasa-CE, Dieese/Conab, Google Maps</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ===================== DADOS ===================== */
+const foods = [
+  {n:"Arroz agulhinha (kg)", c:"Grãos e cereais", old:5.20, cur:5.53},
+  {n:"Feijão carioca (kg)", c:"Grãos e cereais", old:8.40, cur:8.73},
+  {n:"Feijão preto (kg)", c:"Grãos e cereais", old:9.10, cur:9.40},
+  {n:"Farinha de mandioca (kg)", c:"Grãos e cereais", old:6.50, cur:6.30},
+  {n:"Macarrão espaguete (500g)", c:"Grãos e cereais", old:4.20, cur:4.35},
+  {n:"Tomate (kg)", c:"Hortifruti", old:6.80, cur:8.54},
+  {n:"Cebola (kg)", c:"Hortifruti", old:5.50, cur:5.10},
+  {n:"Batata inglesa (kg)", c:"Hortifruti", old:6.20, cur:5.80},
+  {n:"Banana prata (kg)", c:"Hortifruti", old:4.80, cur:4.94},
+  {n:"Laranja (kg)", c:"Hortifruti", old:3.90, cur:3.60},
+  {n:"Cenoura (kg)", c:"Hortifruti", old:5.20, cur:5.60},
+  {n:"Alface (unidade)", c:"Hortifruti", old:2.50, cur:2.70},
+  {n:"Mandioca (kg)", c:"Hortifruti", old:4.50, cur:4.20},
+  {n:"Abóbora (kg)", c:"Hortifruti", old:3.80, cur:4.00},
+  {n:"Coco verde (unidade)", c:"Hortifruti", old:4.00, cur:4.50},
+  {n:"Carne bovina 1ª (kg)", c:"Proteínas", old:38.90, cur:39.63},
+  {n:"Frango inteiro (kg)", c:"Proteínas", old:9.80, cur:9.50},
+  {n:"Ovos (dúzia)", c:"Proteínas", old:9.50, cur:10.20},
+  {n:"Tilápia (kg)", c:"Proteínas", old:16.00, cur:15.20},
+  {n:"Carne suína, pernil (kg)", c:"Proteínas", old:19.50, cur:20.30},
+  {n:"Leite integral (litro)", c:"Laticínios", old:5.80, cur:6.01},
+  {n:"Queijo coalho (kg)", c:"Laticínios", old:32.00, cur:33.50},
+  {n:"Manteiga (200g)", c:"Laticínios", old:9.90, cur:10.04},
+  {n:"Iogurte natural (170g)", c:"Laticínios", old:3.20, cur:3.35},
+  {n:"Açúcar cristal (kg)", c:"Outros", old:4.60, cur:4.45},
+  {n:"Café em pó (500g)", c:"Outros", old:22.00, cur:20.90},
+  {n:"Óleo de soja (900ml)", c:"Outros", old:8.20, cur:7.90},
+  {n:"Sal refinado (kg)", c:"Outros", old:2.30, cur:2.25},
+  {n:"Pão francês (kg)", c:"Outros", old:14.50, cur:14.64},
+  {n:"Margarina (500g)", c:"Outros", old:7.20, cur:7.45},
+];
+
+const markets = [
+  {n:"Super Dabarra", addr:"Av. Pres. Castelo Branco, 4763 — Barra do Ceará", rating:4.3, tag:"Supermercado + padaria", lat:-3.7062508, lng:-38.574654, best:false},
+  {n:"Supermercado Vinte", addr:"Av. 20 de Janeiro, 1680 — Barra do Ceará", rating:4.4, tag:"Mercantil tradicional", lat:-3.7057423, lng:-38.5812012, best:false},
+  {n:"Atacadão LAG — Leste", addr:"Av. Pres. Castelo Branco, 5943 — Barra do Ceará", rating:4.3, tag:"Atacarejo", lat:-3.7023082, lng:-38.5842616, best:true},
+  {n:"Mercadinho Super Aguiar", addr:"Tv. Castelo, 620 — Barra do Ceará", rating:4.2, tag:"Mercadinho de bairro", lat:-3.7007362, lng:-38.5825497, best:false},
+  {n:"Mercadinho Teles", addr:"R. Graça Aranha, 397 — Barra do Ceará", rating:4.5, tag:"Mercadinho de bairro", lat:-3.7083534, lng:-38.5731151, best:false},
+  {n:"Supermercado Kibão", addr:"Av. Pres. Castelo Branco, 5645 — Barra do Ceará", rating:4.4, tag:"Supermercado + entrega", lat:-3.7032269, lng:-38.5813109, best:false},
+  {n:"Mercadinho Arco-Verde", addr:"R. 6 Companheiros, 262 — Barra do Ceará", rating:4.2, tag:"Mercadinho de bairro", lat:-3.7026790, lng:-38.5761454, best:false},
+  {n:"Centerbox Barra do Ceará I", addr:"Av. Cel. Carvalho, 1261 — Barra do Ceará", rating:4.2, tag:"Rede de supermercados", lat:-3.7133333, lng:-38.5886111, best:true},
+  {n:"Centerbox Barra do Ceará II", addr:"Av. Cel. Carvalho, 901 — Barra do Ceará", rating:4.2, tag:"Rede de supermercados", lat:-3.7099342, lng:-38.5889900, best:false},
+  {n:"Mercadinho Cavalcante", addr:"R. Álvaro Garrido, 193 — Barra do Ceará", rating:4.3, tag:"Miúda e Genilson", lat:-3.7129179, lng:-38.5810946, best:false},
+  {n:"Feira Negra de Fortaleza", addr:"R. Astrogildo Fontoura — Barra do Ceará", rating:3.0, tag:"Feira / atacado", lat:-3.7121362, lng:-38.5833711, best:false},
+  {n:"Feira das Goiabeiras", addr:"R. Sen. Robert Kennedy, 410 — Barra do Ceará (sábados)", rating:4.6, tag:"Feira livre", lat:-3.7037143, lng:-38.5789647, best:true},
+  {n:"Cometa Supermercados — Castelo Branco", addr:"Av. Pres. Castelo Branco, 5211 — Barra do Ceará", rating:4.4, tag:"Rede de supermercados", lat:-3.7048575, lng:-38.5779713, best:false},
+  {n:"Mercadinho Ideal", addr:"R. Manuel Moura, 180 — Barra do Ceará", rating:4.6, tag:"Mercadinho de bairro", lat:-3.7149602, lng:-38.5826226, best:false},
+  {n:"Mercantil Morros", addr:"R. Sen. Robert Kennedy, 209 — Barra do Ceará", rating:4.3, tag:"Mercantil de bairro", lat:-3.7017921, lng:-38.5778668, best:false},
+];
+
+const faqs = [
+  {q:"De onde vêm os preços do site?", a:"Os valores partem de cotações públicas da Ceasa-CE e da Pesquisa Nacional da Cesta Básica (Dieese/Conab) para Fortaleza, e são refinados com reportes enviados por moradores da Barra do Ceará na aba Reportar."},
+  {q:"Os preços são exatos, iguais ao caixa do mercado?", a:"Não necessariamente. Eles são valores de referência e podem variar de mercado para mercado e de um dia para o outro. Use o site para ter uma noção de tendência (alta ou queda) e sempre confirme o valor final no caixa."},
+  {q:"Com que frequência os preços são atualizados?", a:"A base de referência é revisada mensalmente. Já os reportes da comunidade (aba Reportar) aparecem em tempo real, assim que são enviados."},
+  {q:"Posso reportar um preço mesmo sem me identificar?", a:"Sim. O campo de nome é opcional — você pode enviar como anônimo ou usar um apelido."},
+  {q:"Como reporto um produto perto do vencimento?", a:"Vá até a aba Reportar, clique em \"Reportar vencimento\", selecione o mercado e informe o produto e a data. Isso ajuda outros moradores a evitarem comprar produtos vencidos ou aproveitarem promoções de véspera de vencimento."},
+  {q:"O Radar da Barra tem alguma ligação com os mercados listados?", a:"Não. É um projeto comunitário e independente. Os mercados são listados apenas como referência de localização para os moradores do bairro."},
+];
+
+/* ===================== RENDER PREÇOS ===================== */
+const grid = document.getElementById('priceGrid');
+const emptyMsg = document.getElementById('emptyMsg');
+let currentCat = 'todos', currentVari = 'todos', currentSearch = '';
+
+function pctChange(o,c){ return ((c-o)/o)*100; }
+
+function renderPrices(){
+  const term = currentSearch.trim().toLowerCase();
+  let items = foods.filter(f=>{
+    const matchCat = currentCat==='todos' || f.c===currentCat;
+    const matchSearch = f.n.toLowerCase().includes(term);
+    const delta = pctChange(f.old,f.cur);
+    const matchVari = currentVari==='todos' || (currentVari==='up' && delta>0) || (currentVari==='down' && delta<0);
+    return matchCat && matchSearch && matchVari;
+  });
+  grid.innerHTML = '';
+  emptyMsg.style.display = items.length? 'none':'block';
+  items.forEach(f=>{
+    const delta = pctChange(f.old,f.cur);
+    const up = delta>0;
+    const card = document.createElement('div');
+    card.className = 'price-card';
+    card.innerHTML = `
+      <span class="cat">${f.c}</span>
+      <h4>${f.n}</h4>
+      <div class="price-row">
+        <span class="price-old mono">R$ ${f.old.toFixed(2)}</span>
+        <span class="price-new mono">R$ ${f.cur.toFixed(2)}</span>
+      </div>
+      <span class="badge ${up?'up':'down'}">${up?'▲':'▼'} ${Math.abs(delta).toFixed(1)}%</span>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+function updateCounts(){
+  const up = foods.filter(f=>pctChange(f.old,f.cur)>0).length;
+  const down = foods.filter(f=>pctChange(f.old,f.cur)<0).length;
+  document.getElementById('upCount').textContent = up;
+  document.getElementById('downCount').textContent = down;
+}
+
+document.getElementById('searchInput').addEventListener('input', e=>{currentSearch=e.target.value; renderPrices();});
+document.getElementById('catFilter').addEventListener('change', e=>{currentCat=e.target.value; renderPrices();});
+document.querySelectorAll('#variSeg button').forEach(b=>{
+  b.addEventListener('click', ()=>{
+    document.querySelectorAll('#variSeg button').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active'); currentVari=b.dataset.vari; renderPrices();
+  });
+});
+
+/* ===================== TICKER ===================== */
+const tickerTrack = document.getElementById('tickerTrack');
+function buildTicker(){
+  const set = foods.map(f=>{
+    const delta = pctChange(f.old,f.cur); const up = delta>0;
+    return `<span class="tick-item">${f.n.split('(')[0].trim()} <span class="${up?'tick-up':'tick-down'}">${up?'▲':'▼'} ${Math.abs(delta).toFixed(1)}% · R$ ${f.cur.toFixed(2)}</span></span>`;
+  }).join('');
+  tickerTrack.innerHTML = set + set; // duplicated for seamless loop
+}
+
+/* ===================== MERCADOS ===================== */
+const marketGrid = document.getElementById('marketGrid');
+function renderMarkets(){
+  marketGrid.innerHTML = markets.map(m=>`
+    <div class="market-card">
+      <div class="top-row">
+        <h4>${m.n}</h4>
+        <span class="rating mono">★ ${m.rating.toFixed(1)}</span>
+      </div>
+      <span class="market-tag ${m.best?'best':''}">${m.best?'★ Melhor custo-benefício':m.tag}</span>
+      <div class="addr">${m.addr}</div>
+      <a class="maplink" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${m.lat},${m.lng}">Ver no mapa →</a>
+    </div>
+  `).join('');
+}
+
+/* ===================== FAQ ===================== */
+const faqList = document.getElementById('faqList');
+function renderFaq(){
+  faqList.innerHTML = faqs.map((f,i)=>`
+    <div class="faq-item" data-i="${i}">
+      <button class="faq-q">${f.q}<span class="plus">+</span></button>
+      <div class="faq-a"><p>${f.a}</p></div>
+    </div>
+  `).join('');
+  document.querySelectorAll('.faq-q').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const item = btn.parentElement;
+      const ans = item.querySelector('.faq-a');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(o=>{o.classList.remove('open'); o.querySelector('.faq-a').style.maxHeight=null;});
+      if(!isOpen){ item.classList.add('open'); ans.style.maxHeight = ans.scrollHeight+'px'; }
+    });
+  });
+}
+
+/* ===================== REPORTAR ===================== */
+const pAlimento = document.getElementById('p-alimento');
+const pMercado = document.getElementById('p-mercado');
+const vMercado = document.getElementById('v-mercado');
+foods.forEach(f=>{ const o=document.createElement('option'); o.textContent=f.n; pAlimento.appendChild(o); });
+markets.forEach(m=>{
+  const o1=document.createElement('option'); o1.textContent=m.n; pMercado.appendChild(o1);
+  const o2=document.createElement('option'); o2.textContent=m.n; vMercado.appendChild(o2);
+});
+
+const reportTabs = document.querySelectorAll('.report-tabs button');
+reportTabs.forEach(b=>{
+  b.addEventListener('click', ()=>{
+    reportTabs.forEach(x=>x.classList.remove('active')); b.classList.add('active');
+    document.querySelectorAll('.form-panel').forEach(p=>p.classList.remove('active'));
+    document.getElementById('form-'+b.dataset.form).classList.add('active');
+  });
+});
+
+const reportsList = document.getElementById('reportsList');
+function loadReports(){
+  try{ return JSON.parse(localStorage.getItem('radarBarraReports')||'[]'); }catch(e){ return []; }
+}
+function saveReports(list){ localStorage.setItem('radarBarraReports', JSON.stringify(list)); }
+function renderReports(){
+  const list = loadReports();
+  if(!list.length){ reportsList.innerHTML = '<p style="color:var(--gray); font-size:.86rem;">Nenhum reporte ainda. Seja o primeiro a contribuir!</p>'; return; }
+  reportsList.innerHTML = list.slice().reverse().slice(0,12).map(r=>`
+    <div class="report-item">
+      <span>${r.text}</span>
+      <span class="who">${r.who} · ${r.date}</span>
+    </div>
+  `).join('');
+}
+
+document.getElementById('formPreco').addEventListener('submit', e=>{
+  e.preventDefault();
+  const alimento = pAlimento.value, mercado = pMercado.value, preco = document.getElementById('p-preco').value;
+  const nome = document.getElementById('p-nome').value.trim() || 'Anônimo';
+  const list = loadReports();
+  list.push({text:`💰 ${alimento} — R$ ${parseFloat(preco).toFixed(2)} no ${mercado}`, who:nome, date:new Date().toLocaleDateString('pt-BR')});
+  saveReports(list); renderReports();
+  document.getElementById('confirmPreco').style.display='block';
+  e.target.reset();
+  setTimeout(()=>document.getElementById('confirmPreco').style.display='none', 4000);
+});
+
+document.getElementById('formVenc').addEventListener('submit', e=>{
+  e.preventDefault();
+  const produto = document.getElementById('v-produto').value, mercado = vMercado.value, data = document.getElementById('v-data').value;
+  const list = loadReports();
+  list.push({text:`⏰ ${produto} vence em ${new Date(data+'T00:00:00').toLocaleDateString('pt-BR')} — ${mercado}`, who:'Comunidade', date:new Date().toLocaleDateString('pt-BR')});
+  saveReports(list); renderReports();
+  document.getElementById('confirmVenc').style.display='block';
+  e.target.reset();
+  setTimeout(()=>document.getElementById('confirmVenc').style.display='none', 4000);
+});
+
+/* ===================== NAV / SCROLLSPY ===================== */
+const navButtons = document.querySelectorAll('nav button');
+const sections = ['precos','mercados','finalidade','tutorial','reportar'].map(id=>document.getElementById(id));
+navButtons.forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.getElementById(btn.dataset.target).scrollIntoView({behavior:'smooth'});
+    document.getElementById('mainNav').classList.remove('open');
+  });
+});
+document.getElementById('burgerBtn').addEventListener('click', ()=>{
+  document.getElementById('mainNav').classList.toggle('open');
+});
+const spy = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      navButtons.forEach(b=>b.classList.toggle('active', b.dataset.target===entry.target.id));
+    }
+  });
+},{rootMargin:'-45% 0px -50% 0px'});
+sections.forEach(s=>spy.observe(s));
+
+/* ===================== SCROLL REVEAL ===================== */
+const revealObs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); revealObs.unobserve(e.target); } });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));
+
+/* ===================== INIT ===================== */
+updateCounts();
+renderPrices();
+buildTicker();
+renderMarkets();
+renderFaq();
+renderReports();
+</script>
+</body>
+</html>
