@@ -1144,3 +1144,17 @@ if(marketGrid){ renderMarkets(); }
 if(faqList){ renderFaq(); }
 if(reportsList){ renderReports(); }
 if(pedidoMarketSelect){ renderMarketChips(); renderOrderGrid(); }
+// Injeção dinâmica do rodapé global unificado
+const footerContainer = document.getElementById('include-footer');
+if(footerContainer) {
+  footerContainer.innerHTML = `
+    <footer>
+      <div class="wrap">
+        <div class="footer-bottom">
+          <span>© 2026 Radar da Barra — feito por e para o bairro.</span>
+          <span>Fontes: Ceasa-CE, Dieese/Conab</span>
+        </div>
+      </div>
+    </footer>
+  `;
+}

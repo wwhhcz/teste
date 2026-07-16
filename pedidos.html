@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><title>Radar da Barra — Pedidos</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <div class="logo"><div>Radar da Barra<small>Barra do Ceará</small></div></div>
+    <nav id="mainNav">
+      <a href="index.html" class="nav-btn">Preços</a>
+      <a href="mercados.html" class="nav-btn">Mercados</a>
+      <a href="pedidos.html" class="nav-btn active">Pedidos</a>
+      <a href="conta.html" class="nav-btn">Conta</a>
+      <a href="finalidade.html" class="nav-btn">Finalidade</a>
+      <a href="tutorial.html" class="nav-btn">Tutorial</a>
+      <a href="reportar.html" class="nav-btn">Reportar</a>
+    </nav>
+    <div class="auth-area" id="authArea"></div>
+  </div>
+  <div class="ticker-wrap"><div class="ticker" id="tickerTrack"></div></div>
+</header>
+
+<main id="main-content">
+<section id="pedidos" class="alt">
+  <div class="wrap">
+    <div class="section-head reveal" style="display:flex; justify-content:space-between; align-items:flex-end; gap:20px; flex-wrap:wrap;">
+      <div>
+        <div class="eyebrow">Novidade</div>
+        <h2>Peça direto de um mercado do bairro</h2>
+        <p>Monte sua sacola de simulação demonstrativa.</p>
+      </div>
+      <button class="a11y-reset" id="openMyOrders" style="width:auto; white-space:nowrap;">📦 Meus pedidos</button>
+    </div>
+    <div class="pedido-market-select reveal" id="pedidoMarketSelect"></div>
+    <div class="pedido-catalog-head reveal" id="catalogHead" style="display:none;">
+      <h3 id="catalogMarketName"></h3>
+      <div class="filters" style="margin-top:14px;">
+        <input type="text" id="orderSearch" placeholder="Buscar produto...">
+        <select id="orderCatFilter">
+          <option value="todos">Todas as categorias</option>
+          <option value="Grãos e cereais">Grãos e cereais</option>
+          <option value="Hortifruti">Hortifruti</option>
+          <option value="Proteínas">Proteínas</option>
+          <option value="Laticínios">Laticínios</option>
+        </select>
+      </div>
+    </div>
+    <div class="order-grid reveal" id="orderGrid"></div>
+  </div>
+</section>
+</main>
+
+<!-- Componentes Flutuantes de Carrinho e Checkout (Mantidos) -->
+<button class="cart-fab" id="cartFab">🛍️ <span class="cart-count" id="cartCount">0</span></button>
+<div class="cart-overlay" id="cartOverlay"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-drawer-head"><h3>Sua sacola</h3><button class="a11y-close" id="cartCloseBtn">✕</button></div>
+  <div class="cart-market-tag" id="cartMarketTag"></div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-empty" id="cartEmpty">Sua sacola está vazia.</div>
+  <div class="cart-summary" id="cartSummary">
+    <div class="cart-line"><span>Total</span><span class="mono" id="cartTotal">R$ 0,00</span></div>
+    <button class="submit-btn" id="goCheckoutBtn" style="width:100%;">Ir para o checkout</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="checkoutOverlay">
+  <div class="modal-card">
+    <button class="a11y-close" id="checkoutCloseBtn">✕</button>
+    <h3>Finalizar pedido (Simulação)</h3>
+    <form id="checkoutForm">
+      <div><label>Seu nome</label><input type="text" id="co-nome" required></div>
+      <div><label>WhatsApp</label><input type="tel" id="co-tel" required></div>
+      <div class="seg" id="deliverySeg"><button type="button" data-mode="retirada" class="active">Retirar</button><button type="button" data-mode="entrega">Entrega</button></div>
+      <div id="addressField" class="hidden"><label>Endereço</label><input type="text" id="co-endereco"></div>
+      <button type="submit" class="submit-btn" style="width:100%;">Confirmar Pedido</button>
+    </form>
+  </div>
+</div>
+
+<div class="modal-overlay" id="statusOverlay">
+  <div class="modal-card">
+    <button class="a11y-close" id="statusCloseBtn">✕</button>
+    <h3 id="statusOrderId">#0000</h3>
+    <p id="statusOrderSummary"></p>
+    <div class="status-track" id="statusTrack">
+      <div class="status-step" data-step="0"><span class="dot"></span><div><strong>Pedido recebido</strong></div></div>
+      <div class="status-step" data-step="1"><span class="dot"></span><div><strong>Separando os itens</strong></div></div>
+      <div class="status-step" data-step="2"><span class="dot"></span><div><strong id="statusStep2Title">Pronto</strong></div></div>
+      <div class="status-step" data-step="3"><span class="dot"></span><div><strong>Concluído</strong></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="myOrdersOverlay">
+  <div class="modal-card">
+    <button class="a11y-close" id="myOrdersCloseBtn">✕</button>
+    <h3>Meus pedidos</h3>
+    <div id="myOrdersList"></div>
+  </div>
+</div>
+
+<div id="include-footer"></div>
+<script src="script.js"></script>
+</body>
+</html>

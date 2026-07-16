@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><title>Radar da Barra — Conta</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <div class="logo"><div>Radar da Barra<small>Barra do Ceará</small></div></div>
+    <nav id="mainNav">
+      <a href="index.html" class="nav-btn">Preços</a>
+      <a href="mercados.html" class="nav-btn">Mercados</a>
+      <a href="pedidos.html" class="nav-btn">Pedidos</a>
+      <a href="conta.html" class="nav-btn active">Conta</a>
+      <a href="finalidade.html" class="nav-btn">Finalidade</a>
+      <a href="tutorial.html" class="nav-btn">Tutorial</a>
+      <a href="reportar.html" class="nav-btn">Reportar</a>
+    </nav>
+    <div class="auth-area" id="authArea"></div>
+  </div>
+  <div class="ticker-wrap"><div class="ticker" id="tickerTrack"></div></div>
+</header>
+
+<main id="main-content">
+<section id="conta">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Sua conta</div>
+      <h2>Entrar ou criar cadastro</h2>
+    </div>
+
+    <div id="contaLoggedOut" class="reveal">
+      <div class="seg" id="contaTabs" style="width:fit-content; margin-bottom:24px;">
+        <button data-form="login" class="active">Já tenho conta</button>
+        <button data-form="cadastro">Criar conta</button>
+      </div>
+      <div class="form-panel active" id="form-login">
+        <form id="loginForm">
+          <div><label>E-mail</label><input type="email" id="li-email" required></div>
+          <div><label>Senha</label><input type="password" id="li-senha" required></div>
+          <p id="loginError" style="color:var(--red-dark); display:none;">Incorreto.</p>
+          <button type="submit" class="submit-btn">Entrar</button>
+        </form>
+      </div>
+      <div class="form-panel" id="form-cadastro">
+        <form id="cadastroForm">
+          <div><label>Nome</label><input type="text" id="ca-nome" required></div>
+          <div><label>Nascimento</label><input type="date" id="ca-nasc" required></div>
+          <div><label>E-mail</label><input type="email" id="ca-email" required></div>
+          <div><label>Senha</label><input type="password" id="ca-senha" required></div>
+          <div><label>Confirmar Senha</label><input type="password" id="ca-senha2" required></div>
+          <button type="submit" class="submit-btn">Criar conta</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="contaLoggedIn" class="reveal" style="display:none;">
+      <div class="basket-card" style="max-width:420px;">
+        <h3 id="contaWelcome"></h3>
+        <p id="contaEmailShow"></p>
+        <button class="submit-btn" id="contaLogoutBtn" style="margin-top:20px;">Sair da conta</button>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<div id="include-footer"></div>
+<script src="script.js"></script>
+</body>
+</html>

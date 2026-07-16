@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><title>Radar da Barra — Reportar</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <div class="logo"><div>Radar da Barra<small>Barra do Ceará</small></div></div>
+    <nav id="mainNav">
+      <a href="index.html" class="nav-btn">Preços</a>
+      <a href="mercados.html" class="nav-btn">Mercados</a>
+      <a href="pedidos.html" class="nav-btn">Pedidos</a>
+      <a href="conta.html" class="nav-btn">Conta</a>
+      <a href="finalidade.html" class="nav-btn">Finalidade</a>
+      <a href="tutorial.html" class="nav-btn">Tutorial</a>
+      <a href="reportar.html" class="nav-btn active">Reportar</a>
+    </nav>
+    <div class="auth-area" id="authArea"></div>
+  </div>
+</header>
+
+<main id="main-content">
+<section id="reportar">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Reportar preço ou vencimento</h2>
+      <p>Ajude a manter as cotações do bairro atualizadas.</p>
+    </div>
+    <div class="report-tabs">
+      <button data-form="preco" class="active">💰 Reportar preço</button>
+      <button data-form="venc">⏰ Reportar vencimento</button>
+    </div>
+    <div class="form-panel active" id="form-preco">
+      <form id="formPreco">
+        <div><label>Alimento</label><select id="p-alimento" required></select></div>
+        <div><label>Mercado</label><select id="p-mercado" required></select></div>
+        <div><label>Preço (R$)</label><input type="number" step="0.01" id="p-preco" required></div>
+        <button type="submit" class="submit-btn">Enviar</button>
+        <div class="confirm-msg" id="confirmPreco">Enviado!</div>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<div id="include-footer"></div>
+<script src="script.js"></script>
+</body>
+</html>

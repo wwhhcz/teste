@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Radar da Barra — Preços</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@700;800&family=Inter:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="#main-content" class="skip-link">Pular para o conteúdo</a>
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <svg class="logo-mark" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="60" cy="60" r="48" fill="none" stroke="#C9004D" stroke-width="5.5"/><circle cx="60" cy="60" r="4.5" fill="#C9004D"/></svg>
+      <div>Radar da Barra<small>Barra do Ceará · Fortaleza/CE</small></div>
+    </div>
+    <button class="burger" id="burgerBtn">☰</button>
+    <nav id="mainNav">
+      <a href="index.html" class="nav-btn active">Preços</a>
+      <a href="mercados.html" class="nav-btn">Mercados</a>
+      <a href="pedidos.html" class="nav-btn">Pedidos</a>
+      <a href="conta.html" class="nav-btn">Conta</a>
+      <a href="finalidade.html" class="nav-btn">Finalidade</a>
+      <a href="tutorial.html" class="nav-btn">Tutorial</a>
+      <a href="reportar.html" class="nav-btn">Reportar</a>
+    </nav>
+    <div class="auth-area" id="authArea"></div>
+  </div>
+  <div class="ticker-wrap"><div class="ticker" id="tickerTrack"></div></div>
+</header>
+
+<main id="main-content">
+<section id="precos">
+  <div class="wrap">
+    <div class="hero reveal">
+      <div class="hero-grid">
+        <div>
+          <h1>Quanto custa <em>comer</em><br>na Barra do Ceará?</h1>
+          <p class="lead">Acompanhamento colaborativo dos preços de 30 alimentos essenciais em 15 mercados do bairro, atualizado pela própria comunidade.</p>
+          <div class="hero-stats">
+            <div class="stat-pill"><div class="num" data-countup="30">0</div><div class="lbl">alimentos monitorados</div></div>
+            <div class="stat-pill"><div class="num" data-countup="15">0</div><div class="lbl">mercados mapeados</div></div>
+            <div class="stat-pill"><div class="num" id="upCount">0</div><div class="lbl">itens em alta</div></div>
+            <div class="stat-pill"><div class="num" id="downCount">0</div><div class="lbl">itens em queda</div></div>
+          </div>
+        </div>
+        <div class="basket-card">
+          <span class="tag">Fortaleza · Dieese/Conab</span>
+          <h3>Custo da cesta básica na capital</h3>
+          <div class="basket-price">R$ 687<span>,90</span></div>
+          <div class="basket-meta"><span class="up">▲ 7,48% no mês</span><span>maio/2026</span></div>
+          <div class="basket-note">Fortaleza segue entre as capitais nordestinas com a cesta mais barata...</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-head reveal" style="margin-top:50px;">
+      <div class="eyebrow">Visualização 360°</div>
+      <h2>O que tem dentro da cesta básica</h2>
+    </div>
+    <div class="basket360 reveal">
+      <div class="basket360-stage" id="basketStage"><div class="basket360-carousel" id="basketCarousel"></div></div>
+      <div class="basket360-controls">
+        <button id="basket360Prev">←</button><span class="basket360-hint">arraste para girar</span><button id="basket360Next">→</button>
+      </div>
+    </div>
+
+    <div class="section-head reveal" style="margin-top:30px;">
+      <div class="eyebrow">Tabela de preços</div>
+      <h2>30 alimentos, preço antigo x atual</h2>
+    </div>
+    <div class="filters reveal">
+      <input type="text" id="searchInput" placeholder="Buscar alimento...">
+      <select id="catFilter">
+        <option value="todos">Todas as categorias</option>
+        <option value="Grãos e cereais">Grãos e cereais</option>
+        <option value="Hortifruti">Hortifruti</option>
+        <option value="Proteínas">Proteínas</option>
+        <option value="Laticínios">Laticínios</option>
+        <option value="Outros">Outros</option>
+      </select>
+      <div class="seg" id="variSeg">
+        <button data-vari="todos" class="active">Todos</button>
+        <button data-vari="up">Subiram</button>
+        <button data-vari="down">Baixaram</button>
+      </div>
+    </div>
+    <div class="price-grid reveal" id="priceGrid"></div>
+    <div class="empty-msg" id="emptyMsg">Nenhum alimento encontrado.</div>
+  </div>
+</section>
+</main>
+
+<div id="include-footer"></div>
+<script src="script.js"></script>
+</body>
+</html>
